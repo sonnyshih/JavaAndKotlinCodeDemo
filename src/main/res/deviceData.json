@@ -1,0 +1,104 @@
+{
+  "CapabilityInfo": [
+    {
+      "CapabilityName": "HTC",
+      "PlatformName": "Android",
+      "PlatformVersion": "6.0",
+      "DeviceName": "FA4CPY801185",
+      "UDID": "",
+      "BundleId": "",
+      "XcodeOrgId": "",
+      "XcodeSigningId": ""
+    },
+    {
+      "CapabilityName": "Nexus_5X_V8.0",
+      "PlatformName": "Android",
+      "PlatformVersion": "6.0",
+      "DeviceName": "emulator-5554",
+      "UDID": "",
+      "BundleId": "",
+      "XcodeOrgId": "",
+      "XcodeSigningId": ""
+    },
+    {
+      "CapabilityName": "NexusOne",
+      "PlatformName": "Android",
+      "PlatformVersion": "6.0",
+      "DeviceName": "ZX1G42BLZH",
+      "UDID": "",
+      "BundleId": "",
+      "XcodeOrgId": "",
+      "XcodeSigningId": ""
+    },
+    {
+      "CapabilityName": "Samsung24",
+      "PlatformName": "Android",
+      "PlatformVersion": "6.0",
+      "DeviceName": "03157df3e540bf3c",
+      "UDID": "",
+      "BundleId": "",
+      "XcodeOrgId": "",
+      "XcodeSigningId": ""
+    },
+    {
+      "CapabilityName": "Samsung21",
+      "PlatformName": "Android",
+      "PlatformVersion": "6.0",
+      "DeviceName": "438ed687",
+      "UDID": "",
+      "BundleId": "",
+      "XcodeOrgId": "",
+      "XcodeSigningId": ""
+    },
+    {
+      "CapabilityName": "Pixel3",
+      "PlatformName": "Android",
+      "PlatformVersion": "9.0",
+      "DeviceName": "8BGX1A920",
+      "UDID": "",
+      "BundleId": "",
+      "XcodeOrgId": "",
+      "XcodeSigningId": ""
+    },
+    {
+      "CapabilityName": "iPhone_8_Safari",
+      "PlatformName": "iOS",
+      "PlatformVersion": "12.0",
+      "DeviceName": "iPhone",
+      "UDID": "f95fe38a248d0e0a76e67516761d7a2789281acb",
+      "BundleId": "com.newegg.iphone",
+      "XcodeOrgId": "HUJL23Z596",
+      "XcodeSigningId": "iPhone Developer"
+    },
+    {
+      "CapabilityName": "iPhoneX",
+      "PlatformName": "iOS",
+      "PlatformVersion": "12.1.4",
+      "DeviceName": "iPhoneX 12.1.4",
+      "UDID": "9f2962f08b47cb8b8869e6a2edd89875f61b8a34",
+      "BundleId": "com.newegg.iphone",
+      "XcodeOrgId": "DZA2D9DNNN",
+      "XcodeSigningId": "iPhone Developer"
+    },
+    {
+      "CapabilityName": "iPhone6",
+      "PlatformName": "iOS",
+      "PlatformVersion": "12.2",
+      "DeviceName": "iPhone6 12.2",
+      "UDID": "579d6789afe73b8527a73717c51e646996c142bd",
+      "BundleId": "com.newegg.iphone",
+      "XcodeOrgId": "DZA2D9DNNN",
+      "XcodeSigningId": "iPhone Developer"
+    },
+    {
+      "CapabilityName": "Simulator_iPhone8",
+      "PlatformName": "iOS",
+      "PlatformVersion": "12.2",
+      "DeviceName": "iPhone 8",
+      "UDID": "2991BE2F-3447-4E04-BD29-224AB03CBF4D",
+      "BundleId": "com.newegg.iphone",
+      "XcodeOrgId": "DZA2D9DNNN",
+      "XcodeSigningId": "iPhone Developer"
+    }
+  ]
+}

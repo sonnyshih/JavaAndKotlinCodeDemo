@@ -14,12 +14,25 @@ repositories {
     mavenCentral()
 }
 
+sourceSets {
+    main {
+        resources.srcDirs += ['src/main/res']
+    }
+
+    test {
+        resources.srcDirs += ['src/test/res']
+    }
+}
+
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     implementation 'com.google.code.gson:gson:2.8.5'
 
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-    testCompile 'pl.pragmatists:JUnitParams:1.1.1'
+    implementation group: 'junit', name: 'junit', version: '4.12'
+    implementation 'pl.pragmatists:JUnitParams:1.1.1'
+
+//    testCompile group: 'junit', name: 'junit', version: '4.12'
+//    testCompile 'pl.pragmatists:JUnitParams:1.1.1'
 
 }
 
