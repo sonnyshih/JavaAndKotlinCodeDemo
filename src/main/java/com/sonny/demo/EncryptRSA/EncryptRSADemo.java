@@ -38,33 +38,33 @@ public class EncryptRSADemo {
 		KeyPair keyPair = keyPairGen.generateKeyPair();
 
 		String msg = "27677005";
-		out.println("©ú¤å:" + msg);
+		out.println("æ˜æ–‡:" + msg);
 
 		PrivateKey privateKey = keyPair.getPrivate();
-		out.println("¨pÆ_:");
+		out.println("ç§é‘°:");
 		out.println("\tFormat:" + privateKey.getFormat());
 		out.println("\tkey:" + Base64.getEncoder().encodeToString(privateKey.getEncoded()));
 
 		PublicKey publicKey = keyPair.getPublic();
-		out.println("¤½Æ_:");
+		out.println("å…¬é‘°:");
 		out.println("\tFormat:" + publicKey.getFormat());
 		out.println("\tkey:" + Base64.getEncoder().encodeToString(publicKey.getEncoded()));
 		
 		{
-			out.println("¤½Æ_¥[±K¡A¨pÆ_¸Ñ±K:");
+			out.println("å…¬é‘°åŠ å¯†ï¼Œç§é‘°è§£å¯†:");
 			String base64Str = encodeBase64(keyPair.getPublic(), msg.getBytes());
-			out.println("\t¥[±K«á:" + base64Str);
+			out.println("\tåŠ å¯†å¾Œ:" + base64Str);
 						
 			byte[] decBytes = decodeBase64(keyPair.getPrivate(), base64Str);
-			out.println("\t¸Ñ±K«á:" + new String(decBytes));
+			out.println("\tè§£å¯†å¾Œ:" + new String(decBytes));
 		}
 		
 		{
-			out.println("¨pÆ_¥[±K¡A¤½Æ_¸Ñ±K:");
+			out.println("ç§é‘°åŠ å¯†ï¼Œå…¬é‘°è§£å¯†:");
 			String base64Str = encodeBase64(keyPair.getPrivate(), msg.getBytes());
-			out.println("\t¥[±K«á:" + base64Str);
+			out.println("\tåŠ å¯†å¾Œ:" + base64Str);
 			byte[] decBytes = decodeBase64(keyPair.getPublic(), base64Str);
-			out.println("\t¸Ñ±K«á:" + new String(decBytes));
+			out.println("\tè§£å¯†å¾Œ:" + new String(decBytes));
 		}
 	}
 }

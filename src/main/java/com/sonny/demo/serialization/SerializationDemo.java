@@ -9,10 +9,10 @@ public class SerializationDemo {
 
 	public static void main(String[] args) {
 
-		// Object serialization ª«¥ó§Ç¦C¤Æ
+		// Object serialization ï¿½ï¿½ï¿½ï¿½Ç¦Cï¿½ï¿½
 		try {
 			MyClass object1 = new MyClass("Hello", 32139604, 2.7e10);
-			System.out.println("ª«¥ó1: " + object1);
+			System.out.println("ï¿½ï¿½ï¿½ï¿½1: " + object1);
 			FileOutputStream fos = new FileOutputStream("d:/Cat.txt");
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 			oos.writeObject(object1);
@@ -22,14 +22,14 @@ public class SerializationDemo {
 			e.printStackTrace();
 		}
 		
-		//Object deserialization ª«¥ó¤Ï§Ç¦C¤Æ
+		//Object deserialization ï¿½ï¿½ï¿½ï¿½Ï§Ç¦Cï¿½ï¿½
         try {
             MyClass object2;
             FileInputStream fis = new FileInputStream("d:/Cat.txt");
             ObjectInputStream ois = new ObjectInputStream(fis);
             object2 = (MyClass) ois.readObject();
             ois.close();
-            System.out.println("ª«¥ó2: " + object2);
+            System.out.println("ï¿½ï¿½ï¿½ï¿½2: " + object2);
         } catch (Exception e) {
         }
 

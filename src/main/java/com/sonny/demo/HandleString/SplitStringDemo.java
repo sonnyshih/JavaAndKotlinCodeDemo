@@ -5,11 +5,11 @@ public class SplitStringDemo {
 	public static void main(String[] args) {
 		String a = "Imagination is more important than knowledge.";
 		String b = "He who has hope has everything.";
-		String c = "¥x¤W¤@¤ÀÄÁ¡A¥x¤U¤Q¦~¥\¡C";
+		String c = "å°ä¸Šä¸€åˆ†é˜ï¼Œå°ä¸‹åå¹´åŠŸã€‚";
 
 		String[] aArray = a.split(" ");
 		String[] bArray = b.split(" ", 2);
-		String[] cArray = c.split("¡A");
+		String[] cArray = c.split("ï¼Œ");
 
 		
 		System.out.println("/* ##### aArray Demo ##### */");
