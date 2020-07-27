@@ -1,6 +1,6 @@
 package com.sonny.demo.DesignPatterns.P1_MVC;
 /*
- * MVC or MVP Pattern ¡V Whats the difference?
+ * MVC or MVP Pattern  Whats the difference?
  * 1. http://www.infragistics.com/community/blogs/todd_snyder/archive/2007/10/17/mvc-or-mvp-pattern-whats-the-difference.aspx
  * 2. http://stackoverflow.com/questions/2056/what-are-mvp-and-mvc-and-what-is-the-difference
  * */
