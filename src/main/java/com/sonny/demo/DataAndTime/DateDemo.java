@@ -10,9 +10,29 @@ import java.util.TimeZone;
 public class DateDemo {
 
 	public static void main(String[] args) {
-		showStringToCalendar();
+		betweenStartAndEndTime();
+//		showStringToCalendar();
 //		showStringToDate();
 //		showNowDate();
+	}
+
+	public static void betweenStartAndEndTime(){
+		SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		try {
+			Date begin = dfs.parse("2020-08-02 12:00:00");
+			Date end = dfs.parse("2020-08-12 13:01:02");
+			long between=(end.getTime()-begin.getTime())/1000;  //除以1000是為了轉換成秒
+
+			long day=between/(24*60*60);
+			long hour=(between/(60*60)-day*24);
+			long min=((between/(60))-day*24*60-hour*60);
+			long second=(between -day*24*60*60-hour*60*60-min*60);
+
+			System.out.println(""+ day +"天"+ hour +"小時"+ min +"分"+ second +"秒");
+
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void showStringToCalendar(){
