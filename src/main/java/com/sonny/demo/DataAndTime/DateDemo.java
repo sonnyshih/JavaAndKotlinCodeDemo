@@ -1,5 +1,6 @@
 package com.sonny.demo.DataAndTime;
 
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -10,10 +11,85 @@ import java.util.TimeZone;
 public class DateDemo {
 
 	public static void main(String[] args) {
-		betweenStartAndEndTime();
+		DateToTWDate();
+//		getYearOfDateString();
+//		betweenStartAndEndTime();
 //		showStringToCalendar();
 //		showStringToDate();
 //		showNowDate();
+	}
+
+	public static void DateToTWDate(){
+		String dateString = "2021-03-08 05:08:06";
+		try {
+			SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			Date date = dfs.parse(dateString);
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(date);
+
+			int year = calendar.get(Calendar.YEAR);
+			int month = calendar.get(Calendar.MONTH) + 1;	//Jan = 0, dec = 11
+			int day = calendar.get(Calendar.DATE);
+			int hour = calendar.get(Calendar.HOUR_OF_DAY);
+			int min = calendar.get(Calendar.MINUTE);
+			int sec = calendar.get(Calendar.SECOND);
+
+			int twYear = year - 1911;
+
+			String monthString = Integer.toString(month);
+			if (month<10){
+				monthString = "0" + monthString;
+			}
+
+			String dayString = Integer.toString(day);
+			if (day<10){
+				dayString = "0" + day;
+			}
+
+			String hourString = Integer.toString(hour);
+			if (hour<10){
+				hourString = "0" + hour;
+			}
+
+			String minString = Integer.toString(min);
+			if (min<10){
+				minString = "0" + min;
+			}
+
+			String secString = Integer.toString(sec);
+			if (sec<10){
+				secString = "0" + sec;
+			}
+
+			String twDate = twYear + "/" +monthString + "/" + dayString + " " + hourString + ":" + minString +":" + secString;
+
+			System.out.println("西元: " + dateString);
+			System.out.println("民國: " + twDate);
+
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static void getYearOfDateString(){
+		String dateString = "2021-07-27 15:28:38";
+
+		try {
+			SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			Date date = dfs.parse(dateString);
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(date);
+
+			System.out.println("Year: " + calendar.get(Calendar.YEAR));
+			System.out.println("Month: " + (calendar.get(Calendar.MONTH)+1));	//Jan = 0, dec = 11
+			System.out.println("Day: " + calendar.get(Calendar.DATE));
+			System.out.println("Hour: " + calendar.get(Calendar.HOUR_OF_DAY));
+			System.out.println("Min: " + calendar.get(Calendar.MINUTE));
+			System.out.println("Sec: " + calendar.get(Calendar.SECOND));
+
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public static void betweenStartAndEndTime(){
