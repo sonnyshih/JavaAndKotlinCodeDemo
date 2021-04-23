@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.TimeZone;
 
 import com.sonny.demo.util.StringUtil;
-import com.sun.org.apache.regexp.internal.recompile;
 
 public class HandleList1Demo {
 	private static String PLATFORM_CODE = "MBLA";

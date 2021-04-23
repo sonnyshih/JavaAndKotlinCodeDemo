@@ -9,19 +9,19 @@ public class HandleOneExceptionDemo {
 			int i;
 
 			for (i = 2; i > -1; i--) {
-				System.out.println("­pºâµ²ªG:" + 6 / i);
+				System.out.println("è¨ˆç®—çµæœ:" + 6 / i);
 			}
 
 		} catch (ArithmeticException e) {
-			System.out.println("¨Ò¥~»¡©ú:" + e.getMessage());
-			System.out.print("¨Ò¥~­ì¦]:");
+			System.out.println("ä¾‹å¤–èªªæ˜:" + e.getMessage());
+			System.out.print("ä¾‹å¤–åŸå› :");
 			e.printStackTrace();
 			
 		} finally {
-			System.out.println("¿ù»~³B²zµ²§ô");
+			System.out.println("éŒ¯èª¤è™•ç†çµæŸ");
 		}
 		
-		System.out.println("µ{¦¡µ²§ô!!");
+		System.out.println("ç¨‹å¼çµæŸ!!");
 	}
 
 }

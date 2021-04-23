@@ -2,9 +2,9 @@ package com.sonny.demo.ExceptionDemo;
 
 /*
  * 1. c:\>javac ThrowExceptionDemo.java
- * 2. c:\>java ThrowExceptionDemo 10 20 0 (¥X²{ "c ¤£¯à¬O 0 !" ¨Ò¥~»¡©ú)
- * 3. c:\>java ThrowExceptionDemo -10 20 4 (¥X²{ "¹Bºâµ²ªG¤p©ó0!" ¨Ò¥~»¡©ú)
- * 4. c:\>java ThrowExceptionDemo 10 20 5 (¥¿½T¿é¥X)
+ * 2. c:\>java ThrowExceptionDemo 10 20 0 (å‡ºç¾ "c ä¸èƒ½æ˜¯ 0 !" ä¾‹å¤–èªªæ˜Ž)
+ * 3. c:\>java ThrowExceptionDemo -10 20 4 (å‡ºç¾ "é‹ç®—çµæžœå°æ–¼0!" ä¾‹å¤–èªªæ˜Ž)
+ * 4. c:\>java ThrowExceptionDemo 10 20 5 (æ­£ç¢ºè¼¸å‡º)
  * */
 public class ThrowExceptionDemo {
 
@@ -12,13 +12,13 @@ public class ThrowExceptionDemo {
 		double value;
 		
 		if (c == 0) {
-			throw new IllegalArgumentException("c ¤£¯à¬O 0 !");
+			throw new IllegalArgumentException("c ï¿½ï¿½ï¿½ï¿½O 0 !");
 			
 		} else {
 			value = a * b / c;
 			
 			if (value < 0) {
-				throw new IllegalArgumentException("¹Bºâµ²ªG¤p©ó0!");
+				throw new IllegalArgumentException("ï¿½Bï¿½âµ²ï¿½Gï¿½pï¿½ï¿½0!");
 			}
 		}
 
@@ -35,25 +35,25 @@ public class ThrowExceptionDemo {
 			double c = Double.parseDouble(args[2]);
 			
 			result = cal(a, b, c);
-			System.out.println("­pºâµ²ªG:" + result);
+			System.out.println("ï¿½pï¿½âµ²ï¿½G:" + result);
 			
 		} catch (IllegalArgumentException e) {
 			
-			System.out.println("¨Ò¥~»¡©ú:" + e.getMessage());
-			System.out.print("¨Ò¥~­ì¦]:");
+			System.out.println("ï¿½Ò¥~ï¿½ï¿½ï¿½ï¿½:" + e.getMessage());
+			System.out.print("ï¿½Ò¥~ï¿½ï¿½]:");
 			e.printStackTrace();
 		
 		} catch (ArrayIndexOutOfBoundsException e) {
 			
-			System.out.println("¨Ò¥~»¡©ú:" + e.getMessage());
-			System.out.print("¨Ò¥~­ì¦]:");
+			System.out.println("ï¿½Ò¥~ï¿½ï¿½ï¿½ï¿½:" + e.getMessage());
+			System.out.print("ï¿½Ò¥~ï¿½ï¿½]:");
 			e.printStackTrace();
 			
 		} finally {
-			System.out.println("¿ù»~³B²zµ²§ô");
+			System.out.println("ï¿½ï¿½ï¿½~ï¿½Bï¿½zï¿½ï¿½ï¿½ï¿½");
 		}
 		
-		System.out.println("µ{¦¡µ²§ô!!");
+		System.out.println("ï¿½{ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½!!");
 	}
 
 }

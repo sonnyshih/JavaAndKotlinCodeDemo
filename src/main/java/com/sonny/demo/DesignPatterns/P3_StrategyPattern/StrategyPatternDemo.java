@@ -1,5 +1,5 @@
 /*
- * Design Pattern: µ¦²¤¼Ò¦¡  (Strategy Pattern)
+ * Design Pattern: ????  (Strategy Pattern)
  * 
  */
 package com.sonny.demo.DesignPatterns.P3_StrategyPattern;

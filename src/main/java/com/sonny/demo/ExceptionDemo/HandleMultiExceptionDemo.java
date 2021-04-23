@@ -3,7 +3,7 @@ package com.sonny.demo.ExceptionDemo;
 /*
  * 1. c:\>javac HandleMultiExceptionDemo.java
  * 2. c:\>java HandleMultiExceptionDemo
- * 3. c:\>java HandleMultiExceptionDemo 100 (µ¹args¸ê®Æ)
+ * 3. c:\>java HandleMultiExceptionDemo 100
  * */
 public class HandleMultiExceptionDemo {
 
@@ -12,27 +12,27 @@ public class HandleMultiExceptionDemo {
 		try {
 
 			int i;
-			String str = args[0];	//¶W¥XArray½d³ò
+			String str = args[0];	//è¶…å‡ºArrayç¯„åœ
 			
 			for (i = 2; i > -1; i--) {
-				System.out.println("­pºâµ²ªG:" + 6 / i);
+				System.out.println("è¨ˆç®—çµæœ:" + 6 / i);
 			}
 
 		} catch (ArithmeticException e) {
-			System.out.println("¨Ò¥~»¡©ú:" + e.getMessage());
-			System.out.print("¨Ò¥~­ì¦]:");
+			System.out.println("ä¾‹å¤–èªªæ˜:" + e.getMessage());
+			System.out.print("ä¾‹å¤–åŸå› :");
 			e.printStackTrace();
 			
 		} catch (ArrayIndexOutOfBoundsException e) {
-			System.out.println("¨Ò¥~»¡©ú:" + e.getMessage());
-			System.out.print("¨Ò¥~­ì¦]:");
+			System.out.println("ä¾‹å¤–èªªæ˜:" + e.getMessage());
+			System.out.print("ä¾‹å¤–åŸå› :");
 			e.printStackTrace();
 			
 		} finally {
-			System.out.println("¿ù»~³B²zµ²§ô");
+			System.out.println("éŒ¯èª¤è™•ç†çµæŸ");
 		}
 		
-		System.out.println("µ{¦¡µ²§ô!!");
+		System.out.println("ç¨‹å¼çµæŸ!!");
 		
 	}
 

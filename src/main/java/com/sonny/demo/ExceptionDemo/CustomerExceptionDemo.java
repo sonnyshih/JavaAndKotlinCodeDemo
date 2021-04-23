@@ -9,7 +9,7 @@ class MyException extends Exception {
 
 	@Override
 	public String getMessage() {
-		return ("¥X»ù¤Ó¦h¦¸: " + data);
+		return ("å‡ºåƒ¹å¤ªå¤šæ¬¡:" + data);
 	}
 
 }
@@ -26,20 +26,20 @@ public class CustomerExceptionDemo {
 					throw new MyException(i);
 				}
 
-				System.out.println("¥X»ù¦¸¼Æ: " + i);
+				System.out.println("å‡ºåƒ¹æ¬¡æ•¸:" + i);
 			}
 
 		} catch (MyException e) {
 
-			System.out.println("¨Ò¥~»¡©ú:" + e.getMessage());
-			System.out.print("¨Ò¥~­ì¦]:");
+			System.out.println("ä¾‹å¤–èªªæ˜:" + e.getMessage());
+			System.out.print("ä¾‹å¤–åŸå› :");
 			e.printStackTrace();
 
 		} finally {
-			System.out.println("¿ù»~³B²zµ²§ô");
+			System.out.println("éŒ¯èª¤è™•ç†çµæŸ");
 		}
 
-		System.out.println("µ{¦¡µ²§ô!!");
+		System.out.println("ç¨‹å¼çµæŸ!!");
 
 	}
 
