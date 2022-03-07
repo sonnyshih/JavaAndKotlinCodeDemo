@@ -11,12 +11,12 @@ import java.util.TimeZone;
 public class DateDemo {
 
 	public static void main(String[] args) {
-		DateToTWDate();
+//		DateToTWDate();
 //		getYearOfDateString();
 //		betweenStartAndEndTime();
 //		showStringToCalendar();
 //		showStringToDate();
-//		showNowDate();
+		showNowDate();
 	}
 
 	public static void DateToTWDate(){
@@ -158,22 +158,21 @@ public class DateDemo {
 	}
 
 	public static void showNowDate(){
-		String DATEFORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";	// ISO-8601 format
-//		String DATEFORMAT = "yyyy-MM-dd HH:mm:ss.SSS";
-
+//		String DATEFORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";	// ISO-8601 format
+		String DATEFORMAT = "yyyy-MM-dd HH:mm:ss.SSS";
 
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DATEFORMAT);
-		simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+//		simpleDateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
 //	    simpleDateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
 //	    simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Taipei"));
-		String utcTime = simpleDateFormat.format(new Date());
+		String nowTime = simpleDateFormat.format(new Date());
 
-		System.out.println(utcTime);
+		System.out.println(nowTime);
 
 		SimpleDateFormat dateFormat = new SimpleDateFormat(DATEFORMAT);
 
 		try {
-			System.out.println("utcTime=" + dateFormat.parse(utcTime));
+			System.out.println("now Time=" + dateFormat.parse(nowTime));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
