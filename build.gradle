@@ -31,6 +31,13 @@ dependencies {
     implementation group: 'junit', name: 'junit', version: '4.12'
     implementation 'pl.pragmatists:JUnitParams:1.1.1'
 
+    // Convert to pdf Libs (com.itextpdf:itextg)
+    implementation 'com.itextpdf:itextpdf:5.5.13.3'
+
+    // Convert to pdf's font
+    implementation 'com.itextpdf:itext-asian:5.2.0'
+
+
 //    testCompile group: 'junit', name: 'junit', version: '4.12'
 //    testCompile 'pl.pragmatists:JUnitParams:1.1.1'
 
