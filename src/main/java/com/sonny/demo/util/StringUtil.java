@@ -18,6 +18,8 @@ import java.math.BigDecimal;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.StringTokenizer;
@@ -416,6 +418,13 @@ public final class StringUtil {
 //        span.setSpan(bss,start,end, Spanned.SPAN_INCLUSIVE_INCLUSIVE );
 //        return span;
 //    }
+
+    public static String getTodayString(){
+        String DATEFORMAT = "yyyy-MM-dd";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(DATEFORMAT);
+        String dateString = simpleDateFormat.format(new Date());
+        return dateString;
+    }
 
 }
 
