@@ -29,10 +29,10 @@ public class DateDemo {
 
 		SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd");
 		try {
+//			today = dfs.parse(dfs.format(new Date()));	// date -> string -> date
+			Date today = dfs.parse(todayString);
 			Date startDate = dfs.parse(startDateString);
 			Date endDate = dfs.parse(EndDateString);
-			Date today = dfs.parse(todayString);
-//			today = dfs.parse(dfs.format(new Date()));	// date -> string -> date
 
 			System.out.println("Today: " + dfs.format(today));
 			System.out.println("Start Date: " + dfs.format(startDate));
@@ -41,12 +41,12 @@ public class DateDemo {
 			System.out.println("-----------------------------");
 			System.out.println("Is after (today > start date?): " + today.after(startDate));
 			System.out.println("Is equals (today = start date?): " + today.equals(startDate));
-			System.out.println(" today >= start date ? : " + greaterThanOrEqualTo(today, startDate));
+			System.out.println(" today >= start date ? : " + greaterThanOrEqualTo(todayString, startDateString));
 
 			System.out.println("-----------------------------");
 			System.out.println("Is before (today < end date?): " + today.before(endDate));
 			System.out.println("Is equals (today = end date?): " + today.equals(endDate));
-			System.out.println(" today <= end date ? : " + lessThanOrEqualTo(today, endDate));
+			System.out.println(" today <= end date ? : " + lessThanOrEqualTo(todayString, EndDateString));
 
 		} catch (ParseException e) {
 			throw new RuntimeException(e);
@@ -54,22 +54,41 @@ public class DateDemo {
 	}
 
 	/**
-	 * Date 1 >= date 2 ?
+	 * current Date >= compare date 2 ?
 	 * */
-	private static boolean greaterThanOrEqualTo(Date date1, Date date2){
-		if (date1.after(date2) || date1.equals(date2)){
-			return true;
+	private static boolean greaterThanOrEqualTo(String currentDateString, String compareDateString){
+		SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			Date currentDate = dfs.parse(currentDateString);
+			Date compareDate = dfs.parse(compareDateString);
+
+			if (currentDate.after(compareDate) || currentDate.equals(compareDate)){
+				return true;
+			}
+
+		} catch (ParseException e) {
+//			throw new RuntimeException(e);
 		}
 
 		return false;
 	}
 
 	/**
-	 * Date 1 <= date 2 ?
+	 * current Date <= compare Date ?
 	 * */
-	private static boolean lessThanOrEqualTo(Date date1, Date date2){
-		if (date1.before(date2) || date1.equals(date2)){
-			return true;
+	private static boolean lessThanOrEqualTo(String currentDateString, String compareDateString){
+		SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd");
+
+		try {
+			Date currentDate = dfs.parse(currentDateString);
+			Date compareDate = dfs.parse(compareDateString);
+
+			if (currentDate.before(compareDate) || currentDate.equals(compareDate)){
+				return true;
+			}
+
+		} catch (ParseException e) {
+//			throw new RuntimeException(e);
 		}
 
 		return false;
