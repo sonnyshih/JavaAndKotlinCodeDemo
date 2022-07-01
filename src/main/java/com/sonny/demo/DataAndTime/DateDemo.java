@@ -11,12 +11,107 @@ import java.util.TimeZone;
 public class DateDemo {
 
 	public static void main(String[] args) {
+		compareDate();
+//		compareDateBySec();
 //		DateToTWDate();
 //		getYearOfDateString();
 //		betweenStartAndEndTime();
 //		showStringToCalendar();
 //		showStringToDate();
-		showNowDate();
+//		showNowDate();
+	}
+
+	public static void compareDate(){
+		String todayString = "2022-07-01 00:08:06";
+		String startDateString = "2022-06-30 05:08:06";
+		String EndDateString = "2022-07-03 05:08:06";
+//		Date today;
+
+		SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd");
+		try {
+			Date startDate = dfs.parse(startDateString);
+			Date endDate = dfs.parse(EndDateString);
+			Date today = dfs.parse(todayString);
+//			today = dfs.parse(dfs.format(new Date()));	// date -> string -> date
+
+			System.out.println("Today: " + dfs.format(today));
+			System.out.println("Start Date: " + dfs.format(startDate));
+			System.out.println("End Date: " + dfs.format(endDate));
+
+			System.out.println("-----------------------------");
+			System.out.println("Is after (today > start date?): " + today.after(startDate));
+			System.out.println("Is equals (today = start date?): " + today.equals(startDate));
+			System.out.println(" today >= start date ? : " + greaterThanOrEqualTo(today, startDate));
+
+			System.out.println("-----------------------------");
+			System.out.println("Is before (today < end date?): " + today.before(endDate));
+			System.out.println("Is equals (today = end date?): " + today.equals(endDate));
+			System.out.println(" today <= end date ? : " + lessThanOrEqualTo(today, endDate));
+
+		} catch (ParseException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	/**
+	 * Date 1 >= date 2 ?
+	 * */
+	private static boolean greaterThanOrEqualTo(Date date1, Date date2){
+		if (date1.after(date2) || date1.equals(date2)){
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Date 1 <= date 2 ?
+	 * */
+	private static boolean lessThanOrEqualTo(Date date1, Date date2){
+		if (date1.before(date2) || date1.equals(date2)){
+			return true;
+		}
+
+		return false;
+
+	}
+
+	/**
+	 *  getTime() 的秒數是從 January 1, 1970, 00:00:00 GMT 算起
+	 * */
+	public static void compareDateBySec(){
+		String todayString = "2022-07-01 00:08:30";
+		String startDateString = "2022-06-30 05:08:59";
+		String startEndString = "2022-07-02 12:08:19";
+
+		SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd");
+//		SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+		try {
+			Date today = dfs.parse(todayString);
+			Date startDate = dfs.parse(startDateString);
+			Date endDate = dfs.parse(startEndString);
+
+
+			System.out.println("Today: " + dfs.format(today));
+			System.out.println("Start Date: " + dfs.format(startDate));
+			System.out.println("End Date: " + dfs.format(endDate));
+
+			long todaySec = today.getTime();
+			long starDateSec = startDate.getTime();
+			long endDateSec = endDate.getTime();
+
+			System.out.println("-----------------------------");
+			System.out.println("("+ dfs.format(today) +") Today sec:" + todaySec);
+			System.out.println("("+ dfs.format(startDate) +") Start Date Sec:" + starDateSec);
+			System.out.println("("+ dfs.format(endDate) +") End Date Sec:" + endDateSec);
+
+			System.out.println("Today >= start ? : " + (todaySec >= starDateSec));
+			System.out.println("Today <= end ? : " + (todaySec <= endDateSec));
+
+		} catch (ParseException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	public static void DateToTWDate(){
