@@ -105,33 +105,18 @@ public class ShowMonthDay {
         int weeks = (int)Math.ceil(dayList.size()/7);
         System.out.println("Total Weeks: " + weeks);
 
-
         System.out.println("|    週     |     日       |      一      |      二      |      三      |       四      |      五      |      六      |");
-        int counter = 0;
         int index = 0;
         for (int i=1; i<=weeks; i++){
 
             System.out.print("   第 "+ i +" 週   ");
 
             for (int j=1; j<=7; j++){
-
-                if (index < dayList.size()){
-                    Map<String, String> item = dayList.get(index);
-                    System.out.print("  "+ item.get("Date") +"   ");
-                } else {
-                    System.out.print("    xx    ");
-                }
-
-                counter++;
-
-                if (counter>6){
-                    counter = 0;
-                }
-
+                Map<String, String> item = dayList.get(index);
+                System.out.print("  "+ item.get("Date") +"   ");
                 index++;
             }
             System.out.println("");
-//            System.out.println("##############");
 
         }
     }
