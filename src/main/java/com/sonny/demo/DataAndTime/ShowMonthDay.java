@@ -68,7 +68,7 @@ public class ShowMonthDay {
     }
 
     private static void showMonthCalendar() {
-        String dateString = "2022-08-27";
+        String dateString = "2022-05-27";
 
         List<Map<String, String>> dayList = getMonthDayMap(dateString);
 
@@ -92,14 +92,18 @@ public class ShowMonthDay {
         int lastDay = Integer.valueOf(lastData.get("DayNum")) ;
         System.out.println("當月最後一天 -- day="+lastDay + "## 星期 " + DAY.get(lastDay));
 
-
-        // 最後一天星期幾，就把「後面」補滿空白星期 到星期六 (例: 最後1天值是 4就是期星三，「後面」就要補3個空白日)
-        for (int i=lastDay; i<=7; i++){
-            Map<String, String> entity = new HashMap<>();
-            entity.put("Day", String.valueOf(i));
-            entity.put("Date", "    xx    ");
-            dayList.add(entity);
+        // 如果最後一天不是星期六時
+        if (lastDay!=7) {
+            // 最後一天星期幾，就把「後面」補滿空白星期 到星期六 (例: 最後1天值是 4就是期星三，「後面」就要補3個空白日)
+            for (int i = lastDay+1; i <= 7; i++) {
+                Map<String, String> entity = new HashMap<>();
+                entity.put("Day", String.valueOf(i));
+                entity.put("Date", "    xx    ");
+                dayList.add(entity);
+            }
         }
+
+        System.out.println("size: " + dayList.size());
 
         // 需要多少週
         int weeks = (int)Math.ceil(dayList.size()/7);
