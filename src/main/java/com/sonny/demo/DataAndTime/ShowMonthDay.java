@@ -68,7 +68,7 @@ public class ShowMonthDay {
     }
 
     private static void showMonthCalendar() {
-        String dateString = "2022-07-27";
+        String dateString = "2022-08-27";
 
         List<Map<String, String>> dayList = getMonthDayMap(dateString);
 
@@ -107,11 +107,11 @@ public class ShowMonthDay {
 
         System.out.println("|    週     |     日       |      一      |      二      |      三      |       四      |      五      |      六      |");
         int index = 0;
-        for (int i=1; i<=weeks; i++){
+        for (int i=0; i<weeks; i++){
 
-            System.out.print("   第 "+ i +" 週   ");
+            System.out.print("   第 "+ (i+1) +" 週   ");
 
-            for (int j=1; j<=7; j++){
+            for (int j=0; j<7; j++){
                 Map<String, String> item = dayList.get(index);
                 System.out.print("  "+ item.get("Date") +"   ");
                 index++;
