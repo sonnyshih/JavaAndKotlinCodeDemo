@@ -21,6 +21,8 @@ public class ExportExcelDemo {
         String[] student2 = {"2","小強","男","26","台中市東區","91"};
         String[] student3 = {"3","小明","男","28","新北市三峽區","90"};
 
+        // HSSFWorkbook: 產生 .xls  檔案
+        // XSSFWorkbook: 產生 .xlsx 檔案
         //宣告一個工作簿
         HSSFWorkbook workbook = new HSSFWorkbook();
 

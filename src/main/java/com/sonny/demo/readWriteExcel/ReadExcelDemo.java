@@ -4,6 +4,9 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -20,9 +23,19 @@ public class ReadExcelDemo {
         String fileName="test.xls";
         String path = dirPath + fileName;
 
+
         try {
-            FileInputStream file = new FileInputStream(new File(path));
-            HSSFWorkbook workbook = new HSSFWorkbook(file);
+            Workbook workbook;
+            FileInputStream file = new FileInputStream(path);
+
+            if (fileName.endsWith(".xls")) {
+                workbook = new HSSFWorkbook(file);
+            } else if (fileName.endsWith(".xlsx")){
+                workbook = new XSSFWorkbook(file);
+            } else {
+                System.out.println("上傳的檔案非Excel檔案");
+                return;
+            }
             Sheet sheet = workbook.getSheetAt(0);   // 取得第1個sheet
             int rows = sheet.getPhysicalNumberOfRows();     // 有多少筆資料
 
