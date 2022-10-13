@@ -1,8 +1,7 @@
-package com.sonny.demo.exportExcel;
+package com.sonny.demo.readWriteExcel;
 
 import org.apache.poi.hssf.usermodel.*;
 
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -11,7 +10,7 @@ public class ExportExcelDemo {
         String workingDir = System.getProperty("user.dir");
         System.out.println("Working Directory = " + workingDir);
 
-        String dirPath = workingDir + "/src/main/java/com/sonny/demo/exportExcel/";
+        String dirPath = workingDir + "/src/main/java/com/sonny/demo/readWriteExcel/";
 
         System.out.println("dirPath = " + dirPath);
 
