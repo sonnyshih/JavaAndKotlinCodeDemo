@@ -1,10 +1,7 @@
 package com.sonny.demo.readWriteExcel;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
@@ -45,7 +42,13 @@ public class ReadExcelDemo {
                 Row row = sheet.getRow(i);  // 取得每一個row
 
                 for (Cell cell : row) { // 取得每一個欄位
+
                     String data = "";
+
+                    // if only get string, using the DataFormatter
+//                    DataFormatter formatter = new DataFormatter();
+//                    data = formatter.formatCellValue(cell);
+
                     switch (cell.getCellType()) {
                         case STRING:
                             data = cell.getStringCellValue();
