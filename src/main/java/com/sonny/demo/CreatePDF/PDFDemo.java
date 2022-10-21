@@ -7,6 +7,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.List;
 
+import static com.sonny.demo.util.FileUtil.getFileRealPath;
+
 /**
  * Reference to: https://www.itread01.com/content/1548816868.html
  * */
@@ -14,6 +16,21 @@ import java.util.List;
 public class PDFDemo {
 
     public static void main(String[] args) {
+        String workingDir = System.getProperty("user.dir");
+        System.out.println("Working Directory = " + workingDir);
+
+        String dirPath = workingDir + "/src/main/java/com/sonny/demo/CreatePDF/";
+        System.out.println("dirPath = " + dirPath);
+
+        long no = System.currentTimeMillis();
+        String filePath = dirPath + "test-"+ no +".pdf";
+
+//        demo1(filePath);
+        demo2(filePath);
+
+    }
+
+    private static void demo1(String filePath){
 
         // 新建document物件
         // Setting the A4 size paper
@@ -23,7 +40,7 @@ public class PDFDemo {
         try {
             // 建立一個書寫器(Writer)與document物件關聯，通過書寫器(Writer)可以將文件寫入到磁碟中。
             // 建立 PdfWriter 物件 第一個引數是對文件物件的引用，第二個引數是檔案的實際名稱，在該名稱中還會給出其輸出路徑。
-            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream("/Users/hongjie/Downloads/temp/test.pdf"));
+            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(filePath));
 
             // 開啟文件
             document.open();
@@ -104,10 +121,122 @@ public class PDFDemo {
 
     }
 
+    private static void demo2(String filePath){
+        // 新建document物件
+        // Setting the A4 size paper
+        float marginLeft = getPtByMm(6.7f);     // 6.7 mm
+        float marginRight = getPtByMm(29.6f);   // 29.6 mm
+        float marginTop = getPtByMm(13.8f);     // 13.8 mm
+        float marginBottom = getPtByMm(4.9f);   // 4.9 mm
+        Document document = new Document(PageSize.A4, marginLeft, marginRight, marginTop, marginBottom);
+
+
+        try {
+            // 建立一個書寫器(Writer)與document物件關聯，通過書寫器(Writer)可以將文件寫入到磁碟中。
+            // 建立 PdfWriter 物件 第一個引數是對文件物件的引用，第二個引數是檔案的實際名稱，在該名稱中還會給出其輸出路徑。
+            PdfWriter writer = PdfWriter.getInstance(document, new FileOutputStream(filePath));
+
+            // 開啟文件
+            document.open();
+            PdfPTable mainPdfPTable = new PdfPTable(1);  //create PDF table with the given widths
+            mainPdfPTable.setWidthPercentage(100); // 寬度100%填充
+
+            for (int i=0; i<5; i++){
+                // 資料
+                addToMainTable(mainPdfPTable, getCustomerData_1("008"));
+                addToMainTable(mainPdfPTable, getCustomerData_2("204001"));
+                addToMainTable(mainPdfPTable, getCustomerData_3("林祖煜"));
+
+                // 空行 1
+                addToMainTable(mainPdfPTable, getCustomerData_FixHeight(24, 10));
+                addToMainTable(mainPdfPTable, getCustomerData_FixHeight(24, 10));
+
+                // 資料
+                addToMainTable(mainPdfPTable, getCustomerData_1("008"));
+                addToMainTable(mainPdfPTable, getCustomerData_2("204002"));
+                addToMainTable(mainPdfPTable, getCustomerData_3("劉育荏"));
+
+                // 空行 2
+                addToMainTable(mainPdfPTable, getCustomerData_FixHeight(25, 10));
+                addToMainTable(mainPdfPTable, getCustomerData_FixHeight(25, 10));
+
+                // 資料
+                addToMainTable(mainPdfPTable, getCustomerData_1("008"));
+                addToMainTable(mainPdfPTable, getCustomerData_2("204003"));
+                addToMainTable(mainPdfPTable, getCustomerData_3("陳則穎"));
+
+
+                // 空行 3
+                addToMainTable(mainPdfPTable, getCustomerData_FixHeight(25, 10));
+                addToMainTable(mainPdfPTable, getCustomerData_FixHeight(25, 10));
+
+                // 資料
+                addToMainTable(mainPdfPTable, getCustomerData_1("008"));
+                addToMainTable(mainPdfPTable, getCustomerData_2("204004"));
+                addToMainTable(mainPdfPTable, getCustomerData_3("張文堯"));
+
+                // 空行 4
+                addToMainTable(mainPdfPTable, getCustomerData_FixHeight(26, 10));
+                addToMainTable(mainPdfPTable, getCustomerData_FixHeight(26, 10));
+
+                // 資料
+                addToMainTable(mainPdfPTable, getCustomerData_1("008"));
+                addToMainTable(mainPdfPTable, getCustomerData_2("204005"));
+                addToMainTable(mainPdfPTable, getCustomerData_3("王令寒"));
+
+                // 空行 5
+                addToMainTable(mainPdfPTable, getCustomerData_FixHeight(25, 10));
+                addToMainTable(mainPdfPTable, getCustomerData_FixHeight(25, 10));
+
+                // 資料
+                addToMainTable(mainPdfPTable, getCustomerData_1("008"));
+                addToMainTable(mainPdfPTable, getCustomerData_2("204006"));
+                addToMainTable(mainPdfPTable, getCustomerData_3("張媛婷"));
+
+                // 空行 6
+                addToMainTable(mainPdfPTable, getCustomerData_FixHeight(25, 10));
+                addToMainTable(mainPdfPTable, getCustomerData_FixHeight(25, 10));
+
+
+                document.newPage();
+            }
+
+
+            //把表格新增到檔案中
+            document.add(mainPdfPTable);
+
+            // 5.關閉文件
+            document.close();
+            writer.close();
+
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    /**
+     *
+     * @param mm: mm
+     * @return: pt
+     * 參考: https://blog.csdn.net/wsjzzcbq/article/details/116208048
+     */
+    private static float getPtByMm(float mm){
+        return  (float)(2.834645 * mm);
+    }
+
     private static void addTableNoBorderCell(PdfPTable table, int textSize, String text){
         BaseFont baseFont = null;
         try {
-            baseFont = BaseFont.createFont("STSong-Light","UniGB-UCS2-H",BaseFont.NOT_EMBEDDED);
+            // 指定字型路徑
+            String fontPath = getFileRealPath("/kaiu.ttf");
+            baseFont = BaseFont.createFont(fontPath, BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+
+//            baseFont = BaseFont.createFont("STSong-Light","UniGB-UCS2-H",BaseFont.NOT_EMBEDDED);
+//            baseFont = BaseFont.createFont(BaseFont.TIMES_ROMAN, BaseFont.CP1257, BaseFont.NOT_EMBEDDED);       // 使用預設字型
+
             Font font = new Font(baseFont, textSize);
             PdfPCell pdfPcell = new PdfPCell(new Phrase(text,font));
             pdfPcell.setHorizontalAlignment(Element.ALIGN_CENTER);
@@ -118,8 +247,46 @@ public class PDFDemo {
         }
     }
 
-    private static void addToMainTable(PdfPTable pdfPTable, PdfPTable subtable){
-        PdfPCell pdfPcell = new PdfPCell(subtable);
+    private static void addTableNoBorderCellLeftFixHeight(PdfPTable table, int height, int textSize, String text){
+        BaseFont baseFont = null;
+        try {
+            // 指定字型路徑 (新細明體)
+            String fontPath = getFileRealPath("/mingliu.ttc") + ",1";   // 一定要串,1 字才會正常顯示
+            baseFont = BaseFont.createFont(fontPath, BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+
+            Font font = new Font(baseFont, textSize);
+            PdfPCell pdfPcell = new PdfPCell(new Phrase(text,font));
+            pdfPcell.setHorizontalAlignment(Element.ALIGN_LEFT);
+            pdfPcell.setVerticalAlignment(Element.ALIGN_CENTER);
+            pdfPcell.setFixedHeight(height);
+            pdfPcell.setBorder(Rectangle.NO_BORDER);
+            table.addCell(pdfPcell);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void addTableNoBorderCellLeft(PdfPTable table, int textSize, String text){
+        BaseFont baseFont = null;
+        try {
+            // 指定字型路徑 (新細明體)
+            String fontPath = getFileRealPath("/mingliu.ttc") + ",1";   // 一定要串,1 字才會正常顯示
+            baseFont = BaseFont.createFont(fontPath, BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
+
+            Font font = new Font(baseFont, textSize);
+            PdfPCell pdfPcell = new PdfPCell(new Phrase(text,font));
+            pdfPcell.setHorizontalAlignment(Element.ALIGN_LEFT);
+            pdfPcell.setVerticalAlignment(Element.ALIGN_CENTER);
+            pdfPcell.setFixedHeight(27);
+            pdfPcell.setBorder(Rectangle.NO_BORDER);
+            table.addCell(pdfPcell);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void addToMainTable(PdfPTable pdfPTable, PdfPTable subTable){
+        PdfPCell pdfPcell = new PdfPCell(subTable);
         pdfPcell.setHorizontalAlignment(Element.ALIGN_CENTER);
         pdfPcell.setBorder(Rectangle.NO_BORDER);
         pdfPTable.addCell(pdfPcell);
@@ -157,7 +324,7 @@ public class PDFDemo {
         pdfpTable.setTotalWidth(530f);                      // set table width a percentage of the page width
 
         /** Company Name */
-        addTableNoBorderCell(pdfpTable, 32,  "hello direk\n");
+        addTableNoBorderCell(pdfpTable, 32,  "Hello World\n");
 
         /** Company Tel, Fax */
         addTableNoBorderCell(pdfpTable, 12, "\nTel: " + "   FAX: ");
@@ -235,5 +402,101 @@ public class PDFDemo {
 
         return pdfPTable;
     }
+
+
+    /**## 特 (Start) #####*/
+    private static PdfPTable getCustomerData_1(String value){
+        /** Customer Data Table */
+        float[] tableColumnWidths = {0.11f, 0.5f};   // each column width (have 2 columns)
+        PdfPTable pdfPTable = new PdfPTable(tableColumnWidths);  //create PDF table with the given widths
+        pdfPTable.setWidthPercentage(530f);                      // set table width a percentage of the page width
+
+        addTableNoBorderCellLeftFixHeight(pdfPTable, 27,18, "試        場:");
+        addTableNoBorderCellLeftFixHeight(pdfPTable, 27,14, value);
+
+        return pdfPTable;
+    }
+
+    private static PdfPTable getCustomerData_2(String value){
+        /** Customer Data Table */
+        float[] tableColumnWidths = {0.11f, 0.5f};   // each column width (have 2 columns)
+        PdfPTable pdfPTable = new PdfPTable(tableColumnWidths);  //create PDF table with the given widths
+        pdfPTable.setWidthPercentage(530f);                      // set table width a percentage of the page width
+
+        addTableNoBorderCellLeftFixHeight(pdfPTable, 27, 18, "考試編號:");
+        addTableNoBorderCellLeftFixHeight(pdfPTable, 27, 20, value);
+
+        return pdfPTable;
+    }
+
+    private static PdfPTable getCustomerData_3(String value){
+        /** Customer Data Table */
+        float[] tableColumnWidths = {0.11f, 0.5f};   // each column width (have 2 columns)
+        PdfPTable pdfPTable = new PdfPTable(tableColumnWidths);  //create PDF table with the given widths
+        pdfPTable.setWidthPercentage(530f);                      // set table width a percentage of the page width
+
+        addTableNoBorderCellLeftFixHeight(pdfPTable, 27, 18, "姓        名:");
+        addTableNoBorderCellLeftFixHeight(pdfPTable, 27, 20, value);
+
+        return pdfPTable;
+    }
+
+    private static PdfPTable getCustomerData_FixHeight(int height, int textSize){
+        /** Customer Data Table */
+        float[] tableColumnWidths = {0.11f};   // each column width (have 2 columns)
+        PdfPTable pdfPTable = new PdfPTable(tableColumnWidths);  //create PDF table with the given widths
+        pdfPTable.setWidthPercentage(530f);                      // set table width a percentage of the page width
+
+        addTableNoBorderCellLeftFixHeight(pdfPTable, height, textSize, "");
+
+        return pdfPTable;
+    }
+
+    private static PdfPTable getCustomerData_Size_10(){
+        /** Customer Data Table */
+        float[] tableColumnWidths = {0.11f};   // each column width (have 2 columns)
+        PdfPTable pdfPTable = new PdfPTable(tableColumnWidths);  //create PDF table with the given widths
+        pdfPTable.setWidthPercentage(530f);                      // set table width a percentage of the page width
+
+        addTableNoBorderCellLeftFixHeight(pdfPTable, 30, 10, "");
+
+        return pdfPTable;
+    }
+
+    private static PdfPTable getCustomerData_Size_12(){
+        /** Customer Data Table */
+        float[] tableColumnWidths = {0.11f};   // each column width (have 2 columns)
+        PdfPTable pdfPTable = new PdfPTable(tableColumnWidths);  //create PDF table with the given widths
+        pdfPTable.setWidthPercentage(530f);                      // set table width a percentage of the page width
+
+        addTableNoBorderCellLeft(pdfPTable, 12, "");
+
+        return pdfPTable;
+    }
+
+    private static PdfPTable getCustomerData_Size_14(){
+        /** Customer Data Table */
+        float[] tableColumnWidths = {0.11f};   // each column width (have 2 columns)
+        PdfPTable pdfPTable = new PdfPTable(tableColumnWidths);  //create PDF table with the given widths
+        pdfPTable.setWidthPercentage(530f);                      // set table width a percentage of the page width
+
+        addTableNoBorderCellLeft(pdfPTable, 14, "");
+
+        return pdfPTable;
+    }
+
+    private static PdfPTable getCustomerData_Size_15(){
+        /** Customer Data Table */
+        float[] tableColumnWidths = {0.11f};   // each column width (have 2 columns)
+        PdfPTable pdfPTable = new PdfPTable(tableColumnWidths);  //create PDF table with the given widths
+        pdfPTable.setWidthPercentage(530f);                      // set table width a percentage of the page width
+
+        addTableNoBorderCellLeft(pdfPTable, 15, "");
+
+        return pdfPTable;
+    }
+
+
+    /**## 特 (End) #####*/
 
 }
