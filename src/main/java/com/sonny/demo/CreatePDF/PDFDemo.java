@@ -141,15 +141,15 @@ public class PDFDemo {
             PdfPTable mainPdfPTable = new PdfPTable(1);  //create PDF table with the given widths
             mainPdfPTable.setWidthPercentage(100); // 寬度100%填充
 
-            for (int i=0; i<5; i++){
+            for (int i=0; i<10; i++){
                 // 資料
                 addToMainTable(mainPdfPTable, getCustomerData_1("008"));
                 addToMainTable(mainPdfPTable, getCustomerData_2("204001"));
                 addToMainTable(mainPdfPTable, getCustomerData_3("林祖煜"));
 
                 // 空行 1
-                addToMainTable(mainPdfPTable, getCustomerData_FixHeight(24, 10));
-                addToMainTable(mainPdfPTable, getCustomerData_FixHeight(24, 10));
+                addToMainTable(mainPdfPTable, getCustomerData_FixHeight(25, 10));
+                addToMainTable(mainPdfPTable, getCustomerData_FixHeight(25, 10));
 
                 // 資料
                 addToMainTable(mainPdfPTable, getCustomerData_1("008"));
@@ -157,8 +157,8 @@ public class PDFDemo {
                 addToMainTable(mainPdfPTable, getCustomerData_3("劉育荏"));
 
                 // 空行 2
-                addToMainTable(mainPdfPTable, getCustomerData_FixHeight(25, 10));
-                addToMainTable(mainPdfPTable, getCustomerData_FixHeight(25, 10));
+                addToMainTable(mainPdfPTable, getCustomerData_FixHeight(26, 10));
+                addToMainTable(mainPdfPTable, getCustomerData_FixHeight(26, 10));
 
                 // 資料
                 addToMainTable(mainPdfPTable, getCustomerData_1("008"));
@@ -167,8 +167,8 @@ public class PDFDemo {
 
 
                 // 空行 3
-                addToMainTable(mainPdfPTable, getCustomerData_FixHeight(25, 10));
-                addToMainTable(mainPdfPTable, getCustomerData_FixHeight(25, 10));
+                addToMainTable(mainPdfPTable, getCustomerData_FixHeight(26, 10));
+                addToMainTable(mainPdfPTable, getCustomerData_FixHeight(26, 10));
 
                 // 資料
                 addToMainTable(mainPdfPTable, getCustomerData_1("008"));
@@ -177,7 +177,7 @@ public class PDFDemo {
 
                 // 空行 4
                 addToMainTable(mainPdfPTable, getCustomerData_FixHeight(26, 10));
-                addToMainTable(mainPdfPTable, getCustomerData_FixHeight(26, 10));
+                addToMainTable(mainPdfPTable, getCustomerData_FixHeight(25, 10));
 
                 // 資料
                 addToMainTable(mainPdfPTable, getCustomerData_1("008"));
@@ -194,8 +194,8 @@ public class PDFDemo {
                 addToMainTable(mainPdfPTable, getCustomerData_3("張媛婷"));
 
                 // 空行 6
-                addToMainTable(mainPdfPTable, getCustomerData_FixHeight(25, 10));
-                addToMainTable(mainPdfPTable, getCustomerData_FixHeight(25, 10));
+                addToMainTable(mainPdfPTable, getCustomerData_FixHeight(23, 10));
+                addToMainTable(mainPdfPTable, getCustomerData_FixHeight(23, 10));
 
 
                 document.newPage();
