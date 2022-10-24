@@ -15,6 +15,9 @@ import static com.sonny.demo.util.FileUtil.getFileRealPath;
 
 public class PDFDemo {
 
+    public static String FONT_ARIAL= getFileRealPath("/arial.ttf");                 // Arial
+    public static String FONT_MING_LIU= getFileRealPath("/mingliu.ttc") + ",1";     // 新細明體 (要加上,1 才會顯示字)
+
     public static void main(String[] args) {
         String workingDir = System.getProperty("user.dir");
         System.out.println("Working Directory = " + workingDir);
@@ -247,11 +250,11 @@ public class PDFDemo {
         }
     }
 
-    private static void addTableNoBorderCellLeftFixHeight(PdfPTable table, int height, int textSize, String text){
+    private static void addTableNoBorderCellLeftFixHeight(PdfPTable table, int height, String fontPath, int textSize, String text){
         BaseFont baseFont = null;
         try {
             // 指定字型路徑 (新細明體)
-            String fontPath = getFileRealPath("/mingliu.ttc") + ",1";   // 一定要串,1 字才會正常顯示
+//            String fontPath = FONT_MING_LIU;   // 一定要串,1 字才會正常顯示
             baseFont = BaseFont.createFont(fontPath, BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
 
             Font font = new Font(baseFont, textSize);
@@ -411,8 +414,8 @@ public class PDFDemo {
         PdfPTable pdfPTable = new PdfPTable(tableColumnWidths);  //create PDF table with the given widths
         pdfPTable.setWidthPercentage(530f);                      // set table width a percentage of the page width
 
-        addTableNoBorderCellLeftFixHeight(pdfPTable, 27,18, "試        場:");
-        addTableNoBorderCellLeftFixHeight(pdfPTable, 27,14, value);
+        addTableNoBorderCellLeftFixHeight(pdfPTable, 27, FONT_MING_LIU,18, "試        場:");
+        addTableNoBorderCellLeftFixHeight(pdfPTable, 27, FONT_ARIAL, 14, "  " + value);
 
         return pdfPTable;
     }
@@ -423,8 +426,8 @@ public class PDFDemo {
         PdfPTable pdfPTable = new PdfPTable(tableColumnWidths);  //create PDF table with the given widths
         pdfPTable.setWidthPercentage(530f);                      // set table width a percentage of the page width
 
-        addTableNoBorderCellLeftFixHeight(pdfPTable, 27, 18, "考試編號:");
-        addTableNoBorderCellLeftFixHeight(pdfPTable, 27, 20, value);
+        addTableNoBorderCellLeftFixHeight(pdfPTable, 27, FONT_MING_LIU,18, "考試編號:");
+        addTableNoBorderCellLeftFixHeight(pdfPTable, 27, FONT_ARIAL,20, " " + value);
 
         return pdfPTable;
     }
@@ -435,8 +438,8 @@ public class PDFDemo {
         PdfPTable pdfPTable = new PdfPTable(tableColumnWidths);  //create PDF table with the given widths
         pdfPTable.setWidthPercentage(530f);                      // set table width a percentage of the page width
 
-        addTableNoBorderCellLeftFixHeight(pdfPTable, 27, 18, "姓        名:");
-        addTableNoBorderCellLeftFixHeight(pdfPTable, 27, 20, value);
+        addTableNoBorderCellLeftFixHeight(pdfPTable, 27, FONT_MING_LIU,18, "姓        名:");
+        addTableNoBorderCellLeftFixHeight(pdfPTable, 27, FONT_MING_LIU,19, " " + value);
 
         return pdfPTable;
     }
@@ -447,55 +450,10 @@ public class PDFDemo {
         PdfPTable pdfPTable = new PdfPTable(tableColumnWidths);  //create PDF table with the given widths
         pdfPTable.setWidthPercentage(530f);                      // set table width a percentage of the page width
 
-        addTableNoBorderCellLeftFixHeight(pdfPTable, height, textSize, "");
+        addTableNoBorderCellLeftFixHeight(pdfPTable, height, FONT_MING_LIU, textSize, "");
 
         return pdfPTable;
     }
-
-    private static PdfPTable getCustomerData_Size_10(){
-        /** Customer Data Table */
-        float[] tableColumnWidths = {0.11f};   // each column width (have 2 columns)
-        PdfPTable pdfPTable = new PdfPTable(tableColumnWidths);  //create PDF table with the given widths
-        pdfPTable.setWidthPercentage(530f);                      // set table width a percentage of the page width
-
-        addTableNoBorderCellLeftFixHeight(pdfPTable, 30, 10, "");
-
-        return pdfPTable;
-    }
-
-    private static PdfPTable getCustomerData_Size_12(){
-        /** Customer Data Table */
-        float[] tableColumnWidths = {0.11f};   // each column width (have 2 columns)
-        PdfPTable pdfPTable = new PdfPTable(tableColumnWidths);  //create PDF table with the given widths
-        pdfPTable.setWidthPercentage(530f);                      // set table width a percentage of the page width
-
-        addTableNoBorderCellLeft(pdfPTable, 12, "");
-
-        return pdfPTable;
-    }
-
-    private static PdfPTable getCustomerData_Size_14(){
-        /** Customer Data Table */
-        float[] tableColumnWidths = {0.11f};   // each column width (have 2 columns)
-        PdfPTable pdfPTable = new PdfPTable(tableColumnWidths);  //create PDF table with the given widths
-        pdfPTable.setWidthPercentage(530f);                      // set table width a percentage of the page width
-
-        addTableNoBorderCellLeft(pdfPTable, 14, "");
-
-        return pdfPTable;
-    }
-
-    private static PdfPTable getCustomerData_Size_15(){
-        /** Customer Data Table */
-        float[] tableColumnWidths = {0.11f};   // each column width (have 2 columns)
-        PdfPTable pdfPTable = new PdfPTable(tableColumnWidths);  //create PDF table with the given widths
-        pdfPTable.setWidthPercentage(530f);                      // set table width a percentage of the page width
-
-        addTableNoBorderCellLeft(pdfPTable, 15, "");
-
-        return pdfPTable;
-    }
-
 
     /**## 特 (End) #####*/
 
