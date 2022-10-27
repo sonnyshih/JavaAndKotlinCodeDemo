@@ -1,6 +1,9 @@
 package com.sonny.demo.readWriteExcel;
 
 import org.apache.poi.hssf.usermodel.*;
+import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.FillPatternType;
+import org.apache.poi.ss.usermodel.IndexedColors;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -41,6 +44,14 @@ public class ExportExcelDemo {
             HSSFRichTextString text = new HSSFRichTextString(header[i]);
             //將內容物件的文字內容寫入到單元格中
             cell.setCellValue(text);
+
+            if (i==0 || i==5){
+                //設置自定義顏色（背景色）
+                CellStyle cellStyle = workbook.createCellStyle();
+                cellStyle.setFillForegroundColor(IndexedColors.LIGHT_YELLOW.getIndex());
+                cellStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+                cell.setCellStyle(cellStyle);
+            }
         }
 
 
