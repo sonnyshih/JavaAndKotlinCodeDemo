@@ -25,6 +25,7 @@ public class ExportExcelDemo {
     /**
      * 1. set font setting: https://www.ez2o.com/Blog/Post/csharp-Excel-NPOI-Font-Style
      * 2. set Cell Font Style: https://www.baeldung.com/apache-poi-change-cell-font
+     * 3. set cell format Style: https://cloud.tencent.com/developer/article/1337088?from=15425&areaSource=102001.1&traceId=9gw1KZyvhicTYnNWWBtLK
      * */
     private static void complexDemo(String dirPath){
 
