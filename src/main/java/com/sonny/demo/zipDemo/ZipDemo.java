@@ -17,8 +17,10 @@ public class ZipDemo {
         String dirPath = workingDir + "/src/main/java/com/sonny/demo/zipDemo/";
         System.out.println("dirPath = " + dirPath);
 
+        // Zip One file
 //        zipOneFile(dirPath);
 
+        // Zip multiple files
 //        zipMultipleFile(dirPath);
 
         zipFolder(dirPath);

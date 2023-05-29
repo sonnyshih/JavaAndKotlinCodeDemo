@@ -11,10 +11,10 @@ import java.util.TimeZone;
 public class DateDemo {
 
 	public static void main(String[] args) {
-		compareDate();
+//		compareDate();
 //		compareDateBySec();
 //		DateToTWDate();
-//		getYearOfDateString();
+		getYearOfDateString();
 //		betweenStartAndEndTime();
 //		showStringToCalendar();
 //		showStringToDate();
@@ -186,7 +186,7 @@ public class DateDemo {
 	}
 
 	public static void getYearOfDateString(){
-		String dateString = "2021-07-27 15:28:38";
+		String dateString = "2023-05-28 15:28:38";
 
 		try {
 			SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -197,6 +197,8 @@ public class DateDemo {
 			System.out.println("Year: " + calendar.get(Calendar.YEAR));
 			System.out.println("Month: " + (calendar.get(Calendar.MONTH)+1));	//Jan = 0, dec = 11
 			System.out.println("Day: " + calendar.get(Calendar.DATE));
+			System.out.println("Day of week : " + calendar.get(Calendar.DAY_OF_WEEK));	// 1: 星期日, 2: 星期一, 3: 星期二, 4: 星期三, 5: 星期四, 6: 星期五, 7: 星期六
+			System.out.println("Weekday: " + getWeekOfDate(calendar));		// 星期幾
 			System.out.println("Hour: " + calendar.get(Calendar.HOUR_OF_DAY));
 			System.out.println("Min: " + calendar.get(Calendar.MINUTE));
 			System.out.println("Sec: " + calendar.get(Calendar.SECOND));
@@ -204,6 +206,17 @@ public class DateDemo {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+	}
+
+
+	public static String getWeekOfDate(Calendar calendar) {
+		String[] weekDays = { "日", "一", "二", "三", "四", "五", "六" };
+//		Calendar cal = Calendar.getInstance();
+//		cal.setTime(dt);
+		int w = calendar.get(Calendar.DAY_OF_WEEK) - 1;
+		if (w < 0)
+			w = 0;
+		return weekDays[w];
 	}
 
 	public static void betweenStartAndEndTime(){
